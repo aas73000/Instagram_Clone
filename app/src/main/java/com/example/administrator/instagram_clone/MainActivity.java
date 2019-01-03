@@ -27,14 +27,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
- //       getActionBar().setTitle(title);
         setActionBarTitle();
         ParseInstallation.getCurrentInstallation().saveInBackground();
         initializeAllViews();
         buttonClicked();
     }
     public void setActionBarTitle(){
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        Toolbar myToolbar = findViewById(R.id.toolbarSignUp);
         setSupportActionBar(myToolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle(title);
@@ -89,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if(e == null){
                             FancyToast.makeText(MainActivity.this,"Sign up successfully with "+parseUser.getUsername(),
                                     FancyToast.LENGTH_LONG,FancyToast.SUCCESS,true).show();
+                            transitionToSocialMediaActivity();
                         }else{
                             FancyToast.makeText(MainActivity.this,e.getMessage(),
                                     FancyToast.LENGTH_LONG,FancyToast.ERROR,true).show();;
@@ -107,5 +107,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         catch (Exception e){
             e.getStackTrace();
         }
+    }
+
+    private void transitionToSocialMediaActivity() {
+        Intent intent = new Intent(MainActivity.this, Social_media_Activity.class);
+        startActivity(intent);
     }
 }

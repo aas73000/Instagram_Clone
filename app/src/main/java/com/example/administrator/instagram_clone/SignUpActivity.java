@@ -12,7 +12,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.parse.LogInCallback;
 import com.parse.ParseException;
@@ -29,7 +28,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbarSignUp);
         setSupportActionBar(myToolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle(title);
@@ -74,6 +73,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                         if (user != null && e == null) {
                             FancyToast.makeText(SignUpActivity.this, "Login successfully", FancyToast.LENGTH_LONG,
                                     FancyToast.SUCCESS, true).show();
+                            transitionToSocialMediaActivity();
                         } else {
                             FancyToast.makeText(SignUpActivity.this, "error login", FancyToast.LENGTH_LONG,
                                     FancyToast.ERROR, true).show();
@@ -97,5 +97,10 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         catch (Exception e){
             e.getStackTrace();
         }
+    }
+
+    private void transitionToSocialMediaActivity() {
+        Intent intent = new Intent(SignUpActivity.this, Social_media_Activity.class);
+        startActivity(intent);
     }
 }
