@@ -80,7 +80,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
                         }
                         progressBar.setAlpha(0);
-                        ParseUser.logOut();
+
                     }
                 });
                 break;

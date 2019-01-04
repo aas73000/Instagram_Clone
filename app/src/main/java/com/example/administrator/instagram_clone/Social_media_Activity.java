@@ -19,6 +19,7 @@ public class Social_media_Activity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         tabAdapter = new TabAdapter(getSupportFragmentManager());
         viewPager.setAdapter(tabAdapter);
+
     }
 
     private void initializeAllViews() {
