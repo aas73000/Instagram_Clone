@@ -112,5 +112,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void transitionToSocialMediaActivity() {
         Intent intent = new Intent(MainActivity.this, Social_media_Activity.class);
         startActivity(intent);
+        finish();
     }
 }

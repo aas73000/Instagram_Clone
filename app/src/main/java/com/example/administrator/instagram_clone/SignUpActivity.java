@@ -102,5 +102,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     private void transitionToSocialMediaActivity() {
         Intent intent = new Intent(SignUpActivity.this, Social_media_Activity.class);
         startActivity(intent);
+        finish();
     }
 }

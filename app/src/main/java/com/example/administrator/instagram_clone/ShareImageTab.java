@@ -149,4 +149,8 @@ public class ShareImageTab extends Fragment {
             }
         }
     }
+
+    public TextView getShareImageDescriotion() {
+        return shareImageDescriotion;
+    }
 }
