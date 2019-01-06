@@ -111,7 +111,7 @@ public class Social_media_Activity extends AppCompatActivity {
                 ParseFile parseFile = new ParseFile("img.png", bytes);
                 ParseObject parseObject = new ParseObject("Photo");
                 parseObject.put("picture", parseFile);
-                parseObject.put("image_des", " ");
+                parseObject.put("image_des"," ");
                 parseObject.put("username", ParseUser.getCurrentUser().getUsername());
                 parseObject.saveInBackground(new SaveCallback() {
                     @Override

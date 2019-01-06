@@ -34,7 +34,8 @@
             android:name="com.parse.CLIENT_KEY"
             android:value="@string/back4app_client_key" />
 
-        <activity android:name=".Social_media_Activity"></activity>
+        <activity android:name=".Social_media_Activity" />
+        <activity android:name=".Other_Users_Profile"></activity>
     </application>
 
 </manifest>
