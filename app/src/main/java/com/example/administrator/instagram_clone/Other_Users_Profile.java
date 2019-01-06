@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -29,11 +30,14 @@ public class Other_Users_Profile extends AppCompatActivity {
     private LinearLayout linearLayout;
     private ProgressBar other_users_profile_ProgrssBar;
     private ScrollView other_users_profile_ScrollView;
+    private Boolean isImageExist;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_other__users__profile);
         other_users_profile_ProgrssBar = findViewById(R.id.otheruserprofileProgressBar);
+        isImageExist = false;
         Intent intent = getIntent();
         String username = intent.getStringExtra("username");
         FancyToast.makeText(Other_Users_Profile.this, username, FancyToast.LENGTH_LONG, FancyToast.SUCCESS, true).show();
@@ -47,6 +51,7 @@ public class Other_Users_Profile extends AppCompatActivity {
             public void done(List<ParseObject> objects, ParseException e) {
                 for (ParseObject post : objects) {
                     if (e == null && objects.size() > 0) {
+                        isImageExist = true;
                         final TextView postDescription = new TextView(Other_Users_Profile.this);
                         if (post.get("image_des") != null){
                             postDescription.setText(post.get("image_des").toString());
@@ -77,11 +82,17 @@ public class Other_Users_Profile extends AppCompatActivity {
                                     linearLayout.addView(postDescription);
                                     other_users_profile_ProgrssBar.setAlpha(0f);
                                     other_users_profile_ScrollView.setAlpha(1f);
+
                                 }
                             }
                         });
                     }
                 }
+                if(!isImageExist){
+                    FancyToast.makeText(Other_Users_Profile.this,"No Photos uploaded by user",FancyToast.LENGTH_LONG
+                            ,FancyToast.INFO,true).show();
+                    finish();}
+
             }
         });
 
